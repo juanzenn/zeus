@@ -17,6 +17,10 @@ const config: Config = {
           ...colors.slate,
           DEFAULT: colors.slate[500],
         },
+        primary: {
+          ...colors.yellow,
+          DEFAULT: colors.yellow[500],
+        },
       },
     },
   },

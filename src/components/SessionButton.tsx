@@ -2,6 +2,7 @@
 import { type Session } from "next-auth";
 
 import { signIn, signOut } from "next-auth/react";
+import { Button } from "./ui/button";
 
 type Props = {
   session: Session | null;
@@ -19,12 +20,5 @@ export default function SessionButton({ session }: Props) {
     }
   }
 
-  return (
-    <button
-      className="bg-blue-500 text-white m-4 p-2 rounded-sm shadow-sm"
-      onClick={handleOnClick}
-    >
-      {label}
-    </button>
-  );
+  return <Button onClick={handleOnClick}>{label}</Button>;
 }

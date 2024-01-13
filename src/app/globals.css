@@ -3,5 +3,10 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-100 font-sans;
+  @apply bg-gray-950 font-sans text-gray-100;
+}
+
+body,
+html {
+  @apply h-full;
 }
