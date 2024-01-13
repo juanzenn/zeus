@@ -5,12 +5,11 @@ import { signIn, signOut } from "next-auth/react";
 import { Button } from "./ui/button";
 
 type Props = {
-  session: Session | null;
+  isLoggedIn: boolean;
 };
 
-export default function SessionButton({ session }: Props) {
-  const isLoggedIn = Boolean(session);
-  const label = isLoggedIn ? "Log Out" : "Log In";
+export default function SessionButton({ isLoggedIn }: Props) {
+  const label = isLoggedIn ? "Sign Out" : "Sign In";
 
   function handleOnClick() {
     if (isLoggedIn) {

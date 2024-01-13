@@ -14,8 +14,8 @@ const config: Config = {
       },
       colors: {
         gray: {
-          ...colors.slate,
-          DEFAULT: colors.slate[500],
+          ...colors.zinc,
+          DEFAULT: colors.zinc[500],
         },
         primary: {
           ...colors.yellow,

@@ -11,7 +11,17 @@ export const authOptions: NextAuthOptions = {
       clientSecret: getEnvVariable("GITHUB_CLIENT_SECRET"),
     }),
   ],
+  session: {
+    strategy: "database",
+  },
   adapter: PrismaAdapter(db),
+  callbacks: {
+    session: async ({ session, user }) => {
+      if (!session) return session;
+
+      return { ...session, user };
+    },
+  },
 };
 
 export const auth = NextAuth(authOptions);
