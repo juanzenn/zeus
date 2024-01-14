@@ -18,8 +18,8 @@ const config: Config = {
           DEFAULT: colors.zinc[500],
         },
         primary: {
-          ...colors.yellow,
-          DEFAULT: colors.yellow[500],
+          ...colors.amber,
+          DEFAULT: colors.amber[500],
         },
       },
     },

@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -16,11 +17,6 @@ export const metadata: Metadata = {
   ],
 };
 
-// <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-// <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-// <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-// <link rel="manifest" href="/site.webmanifest"></link>
-
 export default function RootLayout({
   children,
 }: {
@@ -33,7 +29,7 @@ export default function RootLayout({
 
         <main className="h-full">{children}</main>
 
-        <nav className="h-[50px]">Hola</nav>
+        <Footer />
       </body>
     </html>
   );
