@@ -1,12 +1,10 @@
 import { SiGithub, SiLinkedin, SiX } from "@icons-pack/react-simple-icons";
 import React from "react";
 
-type Props = {};
-
-export default function Footer({}: Props) {
+export default function Footer() {
   return (
-    <div className="space-y-2 bg-gray-900 px-6 py-4 text-gray-500">
-      <div className="flex flex-wrap justify-between">
+    <div className="space-y-4 bg-gray-900 px-6 py-4 text-gray-500 md:space-y-2">
+      <div className="flex flex-col flex-wrap justify-between gap-4 md:flex-row">
         <p>
           <b>Zeus Polls</b> - create by{" "}
           <a
