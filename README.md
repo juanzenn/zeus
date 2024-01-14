@@ -19,7 +19,7 @@ This project is a simple polls app made in Next.js and React. It features a cust
 - [Next.js 14](https://nextjs.org)
 - [React 18](https://reactjs.org)
 - [Prisma 5](https://prisma.io)
-- PostgreSQL 15 (Provided by [Neon](https://neon.tech)))
+- PostgreSQL 15 (Provided by [Neon](https://neon.tech))
 - [TypeScript 5](https://typescriptlang.org)
 - Icons by [lucide](https://lucide.dev) and [simple-icons](https://simpleicons.org/)
 - Auth by [next-auth 4](https://next-auth.js.org/)
