@@ -74,10 +74,15 @@ npm run test:e2e
 - Anyone can vote and check results of the polls. This results are updated in real time.
 - You can share the poll with a link.
 - You can create your account to create and manage your own polls.
-  - By default, users can vote once. You can change this in the poll settings.
   - You can add title and description to your polls.
   - You can add time limits to your polls.
   - You can add a password to your polls.
+
+### Technical Objectives
+
+Zeus will use Next.js and React Server Components. The flow is fairly straignforward. To add **spicy** to the mix, we'll use Websockets to update the results in real time. This technology is new to me, but Next and React is not.
+
+The motivation of this project is to learn and showcase as part of my portfolio. I expect this project to be a good initial point to any fullstack application with scalable code and good practices.
 
 ## Contributing
 
