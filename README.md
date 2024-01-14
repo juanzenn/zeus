@@ -25,10 +25,10 @@ This project is a simple polls app made in Next.js and React. It features a cust
 - Auth by [next-auth 4](https://next-auth.js.org/)
 - UI by [Radix Primitives](https://www.radix-ui.com/) and [shadcn/ui](https://ui.shadcn.com/)
 - Styled with [Tailwind 3](https://tailwindcss.com/)
+- [Playwright](https://playwright.dev/) for E2E tests
 
 ### WIP
 
-- Playwright for E2E tests
 - Ably for real time updates
 
 ## Setup
@@ -53,6 +53,20 @@ npm run dev
 ```
 
 **Note**: We don't use migrations in this project. We keep the "version" of the schema in the Git history. You can add/remove properties to the models and run the `db:push` command to update your database.
+
+### Testing Locally
+
+If you want to test the app locally, and you have used Playwright before, you can simple test the app with `npx playwright test`.
+
+If you haven't used Playwright before, or you are in an unsupported platform (Arch Linux, for example), you can use the Docker image to run the tests.
+
+```bash
+# build the image locally (sudo is required)
+npm run test:setup
+
+# with the image built you can run the tests whenever you want
+npm run test:e2e
+```
 
 ## Features
 
