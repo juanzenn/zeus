@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Zeus - Polls App
 
-## Getting Started
+A polls app made with Next.js.
 
-First, run the development server:
+## Table of Contents
+
+- [General Info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Features](#features)
+- [Contributing](#contributing)
+
+## General Info
+
+This project is a simple polls app made in Next.js and React. It features a custom backend made in the `/api` folder. It's built on the `app` folder with React Server Components, including the latests features of Next 14.
+
+## Technologies
+
+- [Next.js 14](https://nextjs.org)
+- [React 18](https://reactjs.org)
+- [Prisma 5](https://prisma.io)
+- PostgreSQL 15 (Provided by [Neon](https://neon.tech)))
+- [TypeScript 5](https://typescriptlang.org)
+- Icons by [lucide](https://lucide.dev) and [simple-icons](https://simpleicons.org/)
+- Auth by [next-auth 4](https://next-auth.js.org/)
+- UI by [Radix Primitives](https://www.radix-ui.com/) and [shadcn/ui](https://ui.shadcn.com/)
+- Styled with [Tailwind 3](https://tailwindcss.com/)
+
+## Setup
+
+If you want to run this project locally, make sure to have node 20+ installed. Clone the repo in your local machine by your preferred method.
+
+After, copy the `.env.example` file to `.env`, and fill the variables with your own values. Install the dependencies, generate your Prisma types, and run the project.
 
 ```bash
+# copy the .env.example file, and fill the variables with your own values
+cp .env.example .env
+
+# install the dependencies
+npm install
+
+# generate the prisma types and schema
+npm run db:generate
+npm run db:push
+
+# run the project
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Note**: We don't use migrations in this project. We keep the "version" of the schema in the Git history. You can add/remove properties to the models and run the `db:push` command to update your database.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- You can create a "quick poll" without an account.
+- Anyone can vote and check results of the polls. This results are updated in real time.
+- You can share the poll with a link.
+- You can create your account to create and manage your own polls.
+  - By default, users can vote once. You can change this in the poll settings.
+  - You can add title and description to your polls.
+  - You can add time limits to your polls.
+  - You can add a password to your polls.
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to contribute to this project. You can open an issue or a pull request. If you want to add a new feature, please open an issue first to discuss it.
