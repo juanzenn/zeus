@@ -10,9 +10,7 @@ export default async function Navbar() {
 
   return (
     <header
-      className={cn(
-        "mb-8 flex h-14 items-center bg-gray-900 px-6 py-2 shadow-sm",
-      )}
+      className={cn("flex h-14 items-center bg-gray-900 px-6 py-2 shadow-sm")}
     >
       <Link href="/">
         <Image alt="" src="/icon-512.png" width={40} height={40} />

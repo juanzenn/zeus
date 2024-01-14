@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply relative box-border min-w-0;
+}
+
 body {
   @apply bg-gray-950 font-sans text-gray-100;
 }
@@ -9,4 +13,15 @@ body {
 body,
 html {
   @apply h-full;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply text-balance;
+}
+
+p {
+  @apply text-pretty;
 }
