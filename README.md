@@ -26,6 +26,11 @@ This project is a simple polls app made in Next.js and React. It features a cust
 - UI by [Radix Primitives](https://www.radix-ui.com/) and [shadcn/ui](https://ui.shadcn.com/)
 - Styled with [Tailwind 3](https://tailwindcss.com/)
 
+### WIP
+
+- Playwright for E2E tests
+- Ably for real time updates
+
 ## Setup
 
 If you want to run this project locally, make sure to have node 20+ installed. Clone the repo in your local machine by your preferred method.
