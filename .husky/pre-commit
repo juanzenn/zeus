@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Linting
+npm run lint
+
+# Build
+npm run build
+
+# *** Testing will be done in the CI pipeline (GitHub Actions) *** #

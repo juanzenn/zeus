@@ -10,7 +10,8 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "test:setup": "sudo docker run --network=\"host\" --rm --init -it mcr.microsoft.com/playwright:v1.40.1-jammy /bin/sh -c \"cd /home/pwuser && npx -y playwright@1.40.1 run-server --port 4422\"",
-    "test:e2e": "PW_TEST_CONNECT_WS_ENDPOINT=ws://127.0.0.1:4422/ npx playwright test"
+    "test:e2e": "PW_TEST_CONNECT_WS_ENDPOINT=ws://127.0.0.1:4422/ npx playwright test",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^9.2.0",
@@ -37,6 +38,7 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
+    "husky": "^8.0.3",
     "postcss": "^8",
     "prettier": "^3.2.1",
     "prettier-plugin-tailwindcss": "^0.5.11",
