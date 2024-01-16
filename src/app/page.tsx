@@ -49,7 +49,7 @@ function LoginContent() {
 function LoggedInContent({ user }: { user: User }) {
   return (
     <>
-      <TypographyH1>Logged in</TypographyH1>
+      <TypographyH1 data-testid="title">Logged in</TypographyH1>
       <TypographyP>Welcome, {user.name}</TypographyP>
     </>
   );

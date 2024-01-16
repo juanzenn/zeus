@@ -18,5 +18,9 @@ export default function SessionButton({ isLoggedIn }: Props) {
     );
   }
 
-  return <Button onClick={() => signOut()}>{label}</Button>;
+  return (
+    <Button data-testid="signOutButton" onClick={() => signOut()}>
+      {label}
+    </Button>
+  );
 }
