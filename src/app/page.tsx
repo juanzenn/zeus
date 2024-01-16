@@ -4,6 +4,7 @@ import { TypographyH1, TypographyP } from "@/components/ui/typography";
 import { getCurrentUser } from "@/lib/user";
 import { User } from "@prisma/client";
 import { BarChart2 } from "lucide-react";
+import Link from "next/link";
 
 export default async function Home() {
   const user = await getCurrentUser();
@@ -50,7 +51,11 @@ function LoggedInContent({ user }: { user: User }) {
   return (
     <>
       <TypographyH1 data-testid="title">Logged in</TypographyH1>
-      <TypographyP>Welcome, {user.name}</TypographyP>
+      <TypographyP className="mb-6">Welcome, {user.name}</TypographyP>
+
+      <Button asChild size="large">
+        <Link href="/dashboard">Go to dashboard</Link>
+      </Button>
     </>
   );
 }

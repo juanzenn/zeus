@@ -1,6 +1,10 @@
 "use client";
+import { Loader2 } from "lucide-react";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React from "react";
+import { toast } from "sonner";
 import { Button } from "./ui/button";
 
 type Props = {
@@ -8,6 +12,9 @@ type Props = {
 };
 
 export default function SessionButton({ isLoggedIn }: Props) {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = React.useState(false);
+
   const label = isLoggedIn ? "Sign Out" : "Sign In";
 
   if (!isLoggedIn) {
@@ -18,8 +25,23 @@ export default function SessionButton({ isLoggedIn }: Props) {
     );
   }
 
+  async function handleSignOut() {
+    toast.info("Successfully signed out.");
+    setIsLoading(true);
+    await signOut({ redirect: false });
+    setIsLoading(false);
+
+    router.push("/");
+    router.refresh();
+  }
+
   return (
-    <Button data-testid="signOutButton" onClick={() => signOut()}>
+    <Button
+      data-testid="signOutButton"
+      onClick={handleSignOut}
+      disabled={isLoading}
+    >
+      {isLoading && <Loader2 className="mr-2 h-3 w-3 animate-spin" />}
       {label}
     </Button>
   );

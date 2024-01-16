@@ -1,13 +1,28 @@
 "use client";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import React from "react";
+import { toast } from "sonner";
 import { Button } from "../ui/button";
 
 export default function LoginWithGitHubButton() {
-  function handleLogin() {
-    signIn("github");
+  const params = useSearchParams();
+
+  async function handleLogin() {
+    toast.info("Being redirected to GitHub...");
+    await signIn("github", {
+      callbackUrl: "/dashboard",
+    });
   }
+
+  React.useEffect(() => {
+    if (params.has("error")) {
+      toast.error("An error occurred while signing in.", {
+        id: "github-error",
+      });
+    }
+  }, [params]);
 
   return (
     <Button
