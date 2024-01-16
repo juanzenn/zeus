@@ -9,7 +9,7 @@
     "lint": "next lint",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
-    "test:setup": "sudo docker run -p 4422:4422 --rm --init -it mcr.microsoft.com/playwright:v1.40.1-jammy /bin/sh -c \"cd /home/pwuser && npx -y playwright@1.40.1 run-server --port 4422\"",
+    "test:setup": "sudo docker run --network=\"host\" --rm --init -it mcr.microsoft.com/playwright:v1.40.1-jammy /bin/sh -c \"cd /home/pwuser && npx -y playwright@1.40.1 run-server --port 4422\"",
     "test:e2e": "PW_TEST_CONNECT_WS_ENDPOINT=ws://127.0.0.1:4422/ npx playwright test"
   },
   "dependencies": {

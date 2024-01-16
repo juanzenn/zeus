@@ -1,7 +1,6 @@
 "use client";
-import { type Session } from "next-auth";
-
-import { signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
+import Link from "next/link";
 import { Button } from "./ui/button";
 
 type Props = {
@@ -11,13 +10,13 @@ type Props = {
 export default function SessionButton({ isLoggedIn }: Props) {
   const label = isLoggedIn ? "Sign Out" : "Sign In";
 
-  function handleOnClick() {
-    if (isLoggedIn) {
-      signOut();
-    } else {
-      signIn("github");
-    }
+  if (!isLoggedIn) {
+    return (
+      <Button asChild>
+        <Link href="/">{label}</Link>
+      </Button>
+    );
   }
 
-  return <Button onClick={handleOnClick}>{label}</Button>;
+  return <Button onClick={() => signOut()}>{label}</Button>;
 }
