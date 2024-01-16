@@ -1,6 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# ***
+# $ pre-push hook to stop code that
+# 1. fails linting
+# 2. fails build  
+# ***
+
 # Linting
 npm run lint
 
