@@ -24,7 +24,7 @@ jobs:
       # - name: Install Playwright Browsers
       #   run: npx playwright install --with-deps
       - name: Setup Docker
-        run: sudo docker run --network=\host\ --rm --init -it mcr.microsoft.com/playwright:v1.40.1-jammy /bin/sh -c "cd /home/pwuser && npx -y playwright@1.40.1 run-server --port 4422"
+        run: sudo docker run --network=\host\ --rm --init mcr.microsoft.com/playwright:v1.40.1-jammy /bin/sh -c "cd /home/pwuser && npx -y playwright@1.40.1 run-server --port 4422"
       - name: Run Playwright tests
         run: PW_TEST_CONNECT_WS_ENDPOINT=ws://127.0.0.1:4422/ npx playwright test
       - uses: actions/upload-artifact@v3
