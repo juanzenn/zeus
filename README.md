@@ -2,6 +2,8 @@
 
 A polls app made with Next.js.
 
+![Vercel](https://vercelbadge.vercel.app/api/juanzenn/zeus)
+
 ## Table of Contents
 
 - [General Info](#general-info)
