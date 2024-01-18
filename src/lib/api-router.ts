@@ -40,7 +40,7 @@ export async function captureErrors(handler: () => Promise<Response>) {
       stack = isProduction ? [] : err.stack?.split("\n") ?? [];
     } else if (err instanceof Error) {
       const knownError = Object.values(apiRouterErrors).find(
-        (knownError) => knownError.message === (err as Error).message,
+        (knownError) => knownError.message === err.message,
       );
 
       if (knownError) {
