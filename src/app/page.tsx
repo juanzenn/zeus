@@ -38,9 +38,12 @@ function LoginContent() {
           variant="outlined"
           size="large"
           className="w-full"
+          asChild
         >
-          <BarChart2 className="mr-2 h-6 w-6" />
-          Create a quick poll
+          <Link href="/create/quick-poll">
+            <BarChart2 className="mr-2 h-6 w-6" />
+            Create a quick poll
+          </Link>
         </Button>
       </section>
     </>

@@ -1,6 +1,6 @@
 import { getEnvVariable } from "./env";
 
-export const DOMAIN = getEnvVariable("NEXT_PUBLIC_VERCEL_URL");
+export const DOMAIN = "http://localhost:3000"; //getEnvVariable("NEXT_PUBLIC_VERCEL_URL");
 export const BASE_URL = `${DOMAIN}/api`;
 
 function prefixEndpoint(endpoint: string) {

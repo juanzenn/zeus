@@ -1,8 +1,8 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Toaster } from "sonner";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -28,12 +28,10 @@ export default function RootLayout({
       <body className={inter.variable}>
         <Navbar />
 
-        <>{children}</>
+        <Providers>{children}</Providers>
 
         <Footer />
       </body>
-
-      <Toaster richColors position="bottom-left" theme="dark" />
     </html>
   );
 }

@@ -4,9 +4,16 @@
 import { BASE_URL } from "./endpoints";
 
 export const baseFetch = async (url: string, options: RequestInit = {}) => {
-  return fetch(`${BASE_URL}${url}`, {
+  const res = await fetch(`${BASE_URL}${url}`, {
     ...options,
   });
+
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.message);
+  }
+
+  return res;
 };
 
 // *** API Methods ***

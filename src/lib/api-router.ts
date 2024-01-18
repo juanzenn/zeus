@@ -27,16 +27,15 @@ export async function captureErrors(handler: () => Promise<Response>) {
     let stack: string[] = [];
 
     if (
-      err instanceof
-      (PrismaClientKnownRequestError ||
-        PrismaClientUnknownRequestError ||
-        PrismaClientValidationError ||
-        PrismaClientInitializationError)
+      err instanceof PrismaClientInitializationError ||
+      err instanceof PrismaClientValidationError ||
+      err instanceof PrismaClientUnknownRequestError ||
+      err instanceof PrismaClientKnownRequestError
     ) {
       status = 500;
       message = isProduction
         ? "Error querying the database."
-        : PRISMA_KNOW_ERRORS[err.code] ?? err.cause ?? err.message;
+        : PRISMA_KNOW_ERRORS[err.name] ?? err.message.split("\n");
       stack = isProduction ? [] : err.stack?.split("\n") ?? [];
     } else if (err instanceof Error) {
       const castedError = err as Error;
