@@ -39,8 +39,10 @@ export async function captureErrors(handler: () => Promise<Response>) {
         : PRISMA_KNOW_ERRORS[err.code] ?? err.cause ?? err.message;
       stack = isProduction ? [] : err.stack?.split("\n") ?? [];
     } else if (err instanceof Error) {
+      const castedError = err as Error;
+
       const knownError = Object.values(apiRouterErrors).find(
-        (knownError) => knownError.message === err.message,
+        (knownError) => knownError.message === castedError.message,
       );
 
       if (knownError) {
