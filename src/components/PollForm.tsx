@@ -31,7 +31,7 @@ type Props = {
 };
 
 export default function PollForm({ isQuickPoll = false }: Props) {
-  const { trigger, isMutating } = useCreatePoll();
+  const { trigger, isMutating, data } = useCreatePoll();
 
   const titleInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -46,8 +46,6 @@ export default function PollForm({ isQuickPoll = false }: Props) {
       { id: createPollOptionId(), label: "" },
     ],
   });
-
-  const isLoading = isMutating;
 
   function handleChange(value: string | number, key: keyof typeof form) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -64,12 +62,28 @@ export default function PollForm({ isQuickPoll = false }: Props) {
     }));
   }
 
+  function handleRestartForm() {
+    setForm({
+      title: "",
+      description: "",
+      password: "",
+      timeLimit: 3600, // 1 hour
+      options: [
+        { id: createPollOptionId(), label: "" },
+        { id: createPollOptionId(), label: "" },
+      ],
+    });
+    setIsSubmitted(false);
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const parsed = pollSchema.safeParse(form);
 
     if (!parsed.success) {
       parseZorError(parsed.error);
+
+      return;
     }
 
     const { options, ...rest } = form;
@@ -82,7 +96,7 @@ export default function PollForm({ isQuickPoll = false }: Props) {
       },
       {
         onSuccess: () => {
-          toast.success("Poll created!");
+          toast.success("Poll created.");
           setIsSubmitted(true);
         },
       },
@@ -94,8 +108,9 @@ export default function PollForm({ isQuickPoll = false }: Props) {
     titleInputRef.current?.focus();
   }, []);
 
-  if (isLoading) return <CreatingPoll />;
-  else if (isSubmitted) return <CreatedPoll pollId="123" />;
+  if (isMutating) return <CreatingPoll />;
+  else if (isSubmitted && data)
+    return <CreatedPoll pollId={data.id} onRestart={handleRestartForm} />;
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
