@@ -143,7 +143,7 @@ export default function PollForm({ isQuickPoll = false }: Props) {
           <Label htmlFor="secrete" className="flex items-center">
             Password
             <Tooltip delayDuration={200}>
-              <TooltipTrigger>
+              <TooltipTrigger type="button">
                 <InfoCircledIcon className="ml-2 h-4 w-4 text-gray-500" />
               </TooltipTrigger>
               <TooltipContent>
@@ -172,7 +172,7 @@ export default function PollForm({ isQuickPoll = false }: Props) {
             Time limit
             {isQuickPoll && (
               <Tooltip delayDuration={200}>
-                <TooltipTrigger>
+                <TooltipTrigger type="button">
                   <InfoCircledIcon className="ml-2 h-4 w-4 text-gray-500" />
                 </TooltipTrigger>
                 <TooltipContent>

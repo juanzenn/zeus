@@ -15,7 +15,7 @@ export default async function VoteInPollPage({ params }: Props) {
   if (!poll) notFound();
 
   return (
-    <main className="h-dvh">
+    <main className="min-h-dvh p-6 md:p-12">
       <Container>
         <TypographyH1>{poll.title}</TypographyH1>
         <TypographyP className="mt-3">{poll.description}</TypographyP>

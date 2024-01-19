@@ -4,7 +4,7 @@ import { TypographyH1, TypographyP } from "@/components/ui/typography";
 
 export default function CreateQuickPollPage() {
   return (
-    <main className="h-dvh p-12">
+    <main className="min-h-dvh p-6 md:p-12">
       <header className="text-center">
         <TypographyH1 className="mb-3">Create a quick poll</TypographyH1>
         <TypographyP>

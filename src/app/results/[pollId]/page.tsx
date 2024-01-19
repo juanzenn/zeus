@@ -5,5 +5,9 @@ type Props = {
 };
 
 export default function PollResultsPage({ params }: Props) {
-  return <main className="h-dvh">PollResultsPage: {params.pollId}</main>;
+  return (
+    <main className="min-h-dvh p-6 md:p-12">
+      PollResultsPage: {params.pollId}
+    </main>
+  );
 }
