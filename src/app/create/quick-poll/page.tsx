@@ -1,3 +1,4 @@
+import Container from "@/components/Container";
 import PollForm from "@/components/PollForm";
 import { TypographyH1, TypographyP } from "@/components/ui/typography";
 
@@ -11,10 +12,9 @@ export default function CreateQuickPollPage() {
         </TypographyP>
       </header>
 
-      {/* Form */}
-      <section className="mx-auto mt-6 max-w-2xl rounded-md border border-gray-900 px-8 py-6 shadow-md">
+      <Container>
         <PollForm isQuickPoll={true} />
-      </section>
+      </Container>
     </main>
   );
 }

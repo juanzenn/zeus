@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="space-y-4 bg-gray-900 px-6 py-4 text-gray-500 md:space-y-2">
+    <footer className="space-y-4 bg-gray-900 px-6 py-4 text-gray-500 md:space-y-2">
       <div className="flex flex-col flex-wrap justify-between gap-4 md:flex-row">
         <p>
           <b>Zeus Polls</b> - create by{" "}
@@ -29,7 +29,7 @@ export default function Footer() {
         </section>
       </div>
       <p>{new Date().getFullYear()} &copy; All rights reserved</p>
-    </div>
+    </footer>
   );
 }
 

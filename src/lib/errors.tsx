@@ -4,14 +4,18 @@ import { type ZodError } from "zod";
 
 export const apiRouterErrors = {
   unauthorized: {
+    error: true,
     message: "Unauthorized",
     status: 401,
   },
   notFound: {
+    error: true,
     message: "Not found",
     status: 404,
   },
 };
+
+export type NotFoundError = typeof apiRouterErrors.notFound;
 
 // *** ZOD Errors parser ***
 
