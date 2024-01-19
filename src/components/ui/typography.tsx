@@ -66,10 +66,5 @@ export function TypographyH4(props: TypographyProps<HTMLHeadingElement>) {
 export function TypographyP(props: TypographyProps<HTMLParagraphElement>) {
   const Element = props.asChild ? Slot : "p";
 
-  return (
-    <Element
-      {...props}
-      className={cn("leading-7 [&:not(:first-child)]:mt-6", props.className)}
-    />
-  );
+  return <Element {...props} className={cn("leading-7", props.className)} />;
 }

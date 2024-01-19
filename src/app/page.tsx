@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { TypographyH1, TypographyP } from "@/components/ui/typography";
 import { getCurrentUser } from "@/lib/user";
 import { User } from "@prisma/client";
-import { BarChart2 } from "lucide-react";
+import { BarChartIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 export default async function Home() {
@@ -41,7 +41,7 @@ function LoginContent() {
           asChild
         >
           <Link href="/create/quick-poll">
-            <BarChart2 className="mr-2 h-6 w-6" />
+            <BarChartIcon className="mr-2 h-6 w-6" />
             Create a quick poll
           </Link>
         </Button>

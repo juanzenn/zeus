@@ -1,5 +1,5 @@
 "use client";
-import { Loader2 } from "lucide-react";
+import { UpdateIcon } from "@radix-ui/react-icons";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -41,7 +41,7 @@ export default function SessionButton({ isLoggedIn }: Props) {
       onClick={handleSignOut}
       disabled={isLoading}
     >
-      {isLoading && <Loader2 className="mr-2 h-3 w-3 animate-spin" />}
+      {isLoading && <UpdateIcon className="mr-2 h-3 w-3 animate-spin" />}
       {label}
     </Button>
   );
