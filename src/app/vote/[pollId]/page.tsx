@@ -1,9 +1,13 @@
 import Container from "@/components/Container";
-import VotesGroup from "@/components/VotesGroup";
 import { TypographyH1, TypographyP } from "@/components/ui/typography";
 import { getPoll } from "@/lib/polls";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import React from "react";
+
+const VotesGroup = dynamic(() => import("@/components/VotesGroup"), {
+  ssr: false,
+});
 
 type Props = {
   params: { pollId: string };
