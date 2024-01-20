@@ -1,7 +1,7 @@
 import { getEnvVariable } from "@/lib/env";
 import * as Ably from "ably";
 
-export async function GET() {
+export async function POST() {
   const client = new Ably.Realtime(getEnvVariable("ABLY_API_KEY"));
   let tokenRequest = undefined;
 

@@ -13,6 +13,7 @@ export default function AblyContext({
 }) {
   const client = new Ably.Realtime.Promise({
     authUrl: "/api/ably/token",
+    authMethod: "POST",
   });
 
   return <AblyProvider client={client}>{children}</AblyProvider>;
