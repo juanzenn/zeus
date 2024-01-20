@@ -27,7 +27,7 @@ function LoginContent() {
           Zeus Polls is an open source polling platform. <br />
           Create an account or start with a <strong>quick poll</strong>.
         </TypographyP>
-        <hr className="my-4 border-gray-800" />
+        <hr className="my-4 border-gray-700" />
       </header>
 
       <section id="buttons" className="mt-6 space-y-4">
