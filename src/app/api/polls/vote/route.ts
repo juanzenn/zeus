@@ -8,7 +8,7 @@ export function POST(request: Request) {
     const currentUser = await getCurrentUser();
     const data: Prisma.PollVoteCreateInput = await request.json();
 
-    const vote = await db.pollVote.create({
+    await db.pollVote.create({
       data: {
         ...data,
         user: currentUser ? { connect: { id: currentUser.id } } : undefined,

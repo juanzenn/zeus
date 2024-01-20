@@ -8,6 +8,9 @@ import React from "react";
 const VotesGroup = dynamic(() => import("@/components/VotesGroup"), {
   ssr: false,
 });
+const AblyContext = dynamic(() => import("@/components/AblyContext"), {
+  ssr: false,
+});
 
 type Props = {
   params: { pollId: string };
@@ -26,7 +29,9 @@ export default async function VoteInPollPage({ params }: Props) {
 
         <hr className="my-6 border-gray-900" />
 
-        <VotesGroup pollId={params.pollId} options={poll.options} />
+        <AblyContext>
+          <VotesGroup pollId={params.pollId} options={poll.options} />
+        </AblyContext>
       </Container>
     </main>
   );

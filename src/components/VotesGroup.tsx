@@ -3,6 +3,7 @@ import { useVoteInPoll } from "@/lib/hooks/polls";
 import { createPollVoteId } from "@/lib/ids";
 import { PollOption } from "@prisma/client";
 import { BarChartIcon } from "@radix-ui/react-icons";
+import { useChannel } from "ably/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -20,6 +21,8 @@ type Props = {
 export default function VotesGroup({ options, pollId }: Props) {
   const router = useRouter();
 
+  const { channel } = useChannel({ channelName: `poll:${pollId}` });
+
   const { trigger, isMutating } = useVoteInPoll();
   const hasVoted = React.useMemo(() => {
     if (typeof window === "undefined") return false;
@@ -29,6 +32,8 @@ export default function VotesGroup({ options, pollId }: Props) {
   }, [pollId]);
 
   async function handleVote(option: PollOption) {
+    // Publish the option to the channel
+    channel.publish({ name: "vote", data: option });
     await trigger(
       {
         id: createPollVoteId(),
