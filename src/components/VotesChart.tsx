@@ -32,10 +32,14 @@ export default function VotesChart({ options, pollId }: Props) {
     });
   });
 
-  const data = votes.map((option) => ({
-    name: option.label,
-    value: option.votes,
-  }));
+  const data = React.useMemo(
+    () =>
+      votes.map((option) => ({
+        name: option.label,
+        value: option.votes,
+      })),
+    [votes],
+  );
 
   return (
     <div className="h-[50dvh] w-full">

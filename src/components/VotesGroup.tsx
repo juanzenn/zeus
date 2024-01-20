@@ -57,6 +57,11 @@ export default function VotesGroup({ options, pollId }: Props) {
     );
   }
 
+  async function mimicVote(option: PollOption) {
+    // Publish the option to the channel
+    channel.publish({ name: "vote", data: option });
+  }
+
   if (isMutating) {
     return (
       <GeneralLoadingState
@@ -80,6 +85,16 @@ export default function VotesGroup({ options, pollId }: Props) {
             See results
           </Link>
         </Button>
+
+        <section className="mt-6 flex flex-col gap-4">
+          {options.map((option) => (
+            <VoteButton
+              key={option.id}
+              pollOption={option}
+              onVote={mimicVote}
+            />
+          ))}
+        </section>
       </div>
     );
   }
