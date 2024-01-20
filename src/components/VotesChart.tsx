@@ -1,15 +1,9 @@
 "use client";
 
-import { Poll, Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
+import { useChannel } from "ably/react";
 import React from "react";
-import {
-  Bar,
-  BarChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 type PollOption = Prisma.PollOptionGetPayload<{
   include: { votes: true };
@@ -17,16 +11,30 @@ type PollOption = Prisma.PollOptionGetPayload<{
 
 type Props = {
   options: PollOption[];
+  pollId: string;
 };
 
-// TODO: The fetch should be done in the client side
-// We need to add the "websockets" with Ably integration
-// For now we need to add a "refresh" button
+export default function VotesChart({ options, pollId }: Props) {
+  const [votes, setVotes] = React.useState(() => {
+    return options.map((option) => ({
+      ...option,
+      votes: option.votes.length,
+    }));
+  });
+  useChannel({ channelName: `poll:${pollId}` }, (message) => {
+    const data = message.data as PollOption;
 
-export default function VotesChart({ options }: Props) {
-  const data = options.map((option) => ({
+    setVotes((prev) => {
+      const index = prev.findIndex((option) => option.id === data.id);
+      const newVotes = [...prev];
+      newVotes[index].votes += 1;
+      return newVotes;
+    });
+  });
+
+  const data = votes.map((option) => ({
     name: option.label,
-    value: option.votes.length,
+    value: option.votes,
   }));
 
   return (

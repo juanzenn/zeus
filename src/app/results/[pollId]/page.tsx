@@ -1,13 +1,17 @@
 import Container from "@/components/Container";
 import SharePollButton from "@/components/SharePollButton";
-import VotesChart from "@/components/VotesChart";
-import { Button } from "@/components/ui/button";
 import { TypographyH1, TypographyP } from "@/components/ui/typography";
 import { db } from "@/lib/db";
-import { Share1Icon } from "@radix-ui/react-icons";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import React from "react";
-import { toast } from "sonner";
+
+const AblyContext = dynamic(() => import("@/components/AblyContext"), {
+  ssr: false,
+});
+const VotesChart = dynamic(() => import("@/components/VotesChart"), {
+  ssr: false,
+});
 
 type Props = {
   params: { pollId: string };
@@ -23,11 +27,6 @@ export default async function PollResultsPage({ params }: Props) {
     include: { votes: true },
   });
 
-  function handleShare() {
-    navigator.clipboard.writeText(window.location.href);
-    toast.info("Link copied to clipboard");
-  }
-
   if (!poll) notFound();
 
   return (
@@ -42,7 +41,9 @@ export default async function PollResultsPage({ params }: Props) {
           <SharePollButton />
         </div>
 
-        <VotesChart options={options} />
+        <AblyContext>
+          <VotesChart options={options} pollId={pollId} />
+        </AblyContext>
       </Container>
     </main>
   );
