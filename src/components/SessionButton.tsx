@@ -40,6 +40,8 @@ export default function SessionButton({ isLoggedIn }: Props) {
       data-testid="signOutButton"
       onClick={handleSignOut}
       disabled={isLoading}
+      variant="ghost"
+      className="hover:bg-red-400 hover:text-red-900"
     >
       {isLoading && <UpdateIcon className="mr-2 h-3 w-3 animate-spin" />}
       {label}

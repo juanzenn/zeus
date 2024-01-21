@@ -1,3 +1,4 @@
+import SessionButton from "@/components/SessionButton";
 import SidebarLink from "@/components/dashboard/SidebarLink";
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/user";

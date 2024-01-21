@@ -1,7 +1,15 @@
+import Header from "@/components/dashboard/header";
 import React from "react";
 
-type Props = {};
-
-export default function SettingsPage({}: Props) {
-  return <>SettingsPage</>;
+export default function SettingsPage() {
+  return (
+    <>
+      <Header
+        title="Settings"
+        subtitle={`
+          Change your account settings.
+        `}
+      />
+    </>
+  );
 }
