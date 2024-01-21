@@ -1,6 +1,7 @@
 import SidebarLink from "@/components/dashboard/SidebarLink";
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/user";
+import { Archive, Home, PieChart, Settings } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -11,10 +12,10 @@ type Props = {
 };
 
 const SIDEBAR_LINKS = [
-  { label: "Dashboard", href: "/dashboard" },
-  { label: "Polls", href: "/dashboard/polls" },
-  { label: "Settings", href: "/dashboard/settings" },
-  { label: "Archive", href: "/dashboard/archive" },
+  { Icon: Home, label: "Dashboard", href: "/dashboard" },
+  { Icon: PieChart, label: "Polls", href: "/dashboard/polls" },
+  { Icon: Settings, label: "Settings", href: "/dashboard/settings" },
+  { Icon: Archive, label: "Archive", href: "/dashboard/archive" },
 ];
 
 export default async function layout({ children }: Props) {
@@ -42,8 +43,10 @@ export default async function layout({ children }: Props) {
             Zeus
           </Link>
 
-          {SIDEBAR_LINKS.map((link) => (
-            <SidebarLink {...link} key={link.href} />
+          {SIDEBAR_LINKS.map(({ Icon, ...rest }) => (
+            <SidebarLink {...rest} key={rest.href}>
+              <Icon className="mr-4" strokeWidth={2} size={18} />
+            </SidebarLink>
           ))}
         </aside>
 
