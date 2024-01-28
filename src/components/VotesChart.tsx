@@ -3,7 +3,11 @@
 import { Prisma } from "@prisma/client";
 import { useChannel } from "ably/react";
 import React from "react";
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, Pie, PieChart,Tooltip, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { ChakraProvider, Switch} from "@chakra-ui/react";
+
+
+
 
 type PollOption = Prisma.PollOptionGetPayload<{
   include: { votes: true };
@@ -13,6 +17,8 @@ type Props = {
   options: PollOption[];
   pollId: string;
 };
+
+
 
 export default function VotesChart({ options, pollId }: Props) {
   const [votes, setVotes] = React.useState(() => {
@@ -41,15 +47,39 @@ export default function VotesChart({ options, pollId }: Props) {
     [votes],
   );
 
+  const [chartType, setChartType] = React.useState('bar');
+
+  function toggleChartType() {
+    setChartType((prev) => (prev === 'bar' ? 'pie' : 'bar'));
+  }
+
+
+
   return (
     <div className="h-[50dvh] w-full">
+      <div>
+        <label htmlFor="chart-toggle" className="mr-2">
+          Bar/Pie:
+        </label>
+        <ChakraProvider>
+        <Switch onChange={toggleChartType} checked={chartType === 'pie'}/>
+        </ChakraProvider>
+        
+      </div>
       <ResponsiveContainer width="100%">
-        <BarChart data={data}>
-          <YAxis hide dataKey="value" />
-          <XAxis dataKey="name" />
+        {chartType === 'bar' ? (
+          <BarChart data={data}>
+            <YAxis hide dataKey="value" />
+            <XAxis dataKey="name" />
 
-          <Bar fill="#f59e0b" dataKey="value" />
-        </BarChart>
+            <Bar fill="#f59e0b" dataKey="value" />
+          </BarChart>
+        ) : (
+          <PieChart data={data}>
+            <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={80} fill="#f59e0b" label />
+            <Tooltip />
+          </PieChart>
+        )}
       </ResponsiveContainer>
     </div>
   );
