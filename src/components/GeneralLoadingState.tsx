@@ -4,7 +4,7 @@ import { TypographyH2, TypographyP } from "./ui/typography";
 
 type Props = {
   title: string;
-  description: string;
+  description?: string;
 };
 
 export default function GeneralLoadingState({ description, title }: Props) {

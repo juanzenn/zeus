@@ -12,7 +12,7 @@ export default function Container({ children, className }: Props) {
   return (
     <section
       className={cn(
-        "mx-auto mt-6 max-w-2xl rounded-md border border-gray-900 px-8 py-6 shadow-md",
+        "mx-auto mt-6 max-w-2xl rounded-md border border-gray-800 px-8 py-6 shadow-md",
         className,
       )}
     >

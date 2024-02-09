@@ -99,6 +99,7 @@ export default function PollForm({ isQuickPoll = false }: Props) {
         onSuccess: () => {
           toast.success("Poll created.");
           setIsSubmitted(true);
+          window.scrollTo({ top: 0, behavior: "smooth" });
         },
       },
     );
@@ -207,7 +208,7 @@ export default function PollForm({ isQuickPoll = false }: Props) {
         </FormGroup>
       </section>
 
-      <hr className="border-gray-900" />
+      <hr className="border-gray-800" />
 
       <section>
         <header>
