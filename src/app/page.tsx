@@ -21,10 +21,14 @@ export default async function Home() {
 function LoginContent() {
   return (
     <>
-      <header className="text-center">
-        <TypographyH1 data-testid="title">Zeus Polls</TypographyH1>
-        <TypographyP data-testid="content">
-          Zeus Polls is an open source polling platform. <br />
+      <header className="space-y-4 text-center">
+        <TypographyH1 data-testid="title" className="">
+          Zeus Polls
+        </TypographyH1>
+        <TypographyP data-testid="content" className="text-lg">
+          Zeus Polls is an open source polling platform.
+        </TypographyP>
+        <TypographyP className="text-lg">
           Create an account or start with a <strong>quick poll</strong>.
         </TypographyP>
         <hr className="my-4 border-gray-700" />

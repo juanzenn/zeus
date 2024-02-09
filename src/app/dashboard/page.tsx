@@ -1,5 +1,16 @@
+import Header from "@/components/dashboard/header";
+import { getCurrentUser } from "@/lib/user";
 import React from "react";
 
-export default function DashboardPage() {
-  return <main className="min-h-dvh p-6 md:p-12">DashboardPage</main>;
+export default async function DashboardPage() {
+  const currentUser = await getCurrentUser();
+
+  return (
+    <>
+      <Header
+        title="Dashboard"
+        subtitle={`Welcome back, ${currentUser?.name}!`}
+      />
+    </>
+  );
 }
