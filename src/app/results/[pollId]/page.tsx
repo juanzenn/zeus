@@ -31,10 +31,12 @@ export default async function PollResultsPage({ params }: Props) {
 
   return (
     <main className="min-h-dvh p-6 md:p-12">
-      <Container className="max-w-4xl">
+      <Container className="max-w-6xl">
         <div className="flex justify-between">
           <header className="mb-12 flex-1">
-            <TypographyH1>{poll.title}</TypographyH1>
+            <TypographyH1 className="mb-4 line-clamp-2">
+              {poll.title}
+            </TypographyH1>
             <TypographyP>{poll.description}</TypographyP>
           </header>
 
