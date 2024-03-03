@@ -57,6 +57,15 @@ export default function VotesGroup({ options, pollId }: Props) {
     );
   }
 
+  React.useEffect(
+    function unsubscribe() {
+      return () => {
+        channel.unsubscribe();
+      };
+    },
+    [channel],
+  );
+
   if (isMutating) {
     return (
       <GeneralLoadingState
