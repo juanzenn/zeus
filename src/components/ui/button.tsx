@@ -47,3 +47,5 @@ export function Button({
     />
   );
 }
+
+export const buttonVariants = variants;
