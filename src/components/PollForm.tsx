@@ -1,11 +1,14 @@
 "use client";
 
+import { api } from "@/lib/api";
 import { parseZorError } from "@/lib/errors";
 import { useCreatePoll } from "@/lib/hooks/polls";
 import { createPollId, createPollOptionId } from "@/lib/ids";
 import { pollSchema } from "@/lib/polls";
 import { TIME_LIMITS } from "@/lib/time-limits";
 import { InfoCircledIcon, PlusIcon, TrashIcon } from "@radix-ui/react-icons";
+import { revalidatePath } from "next/cache";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { toast } from "sonner";
 import CreatedPoll from "./CreatedPoll";
@@ -79,6 +82,7 @@ export default function PollForm({ isQuickPoll = false }: Props) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    window.scrollTo({ top: 0 });
     const parsed = pollSchema.safeParse(form);
 
     if (!parsed.success) {
@@ -99,10 +103,12 @@ export default function PollForm({ isQuickPoll = false }: Props) {
         onSuccess: () => {
           toast.success("Poll created.");
           setIsSubmitted(true);
-          window.scrollTo({ top: 0, behavior: "smooth" });
         },
       },
     );
+
+    // Revalidate the path to update the cache
+    await api.get("/revalidate?path=/dashboard/polls");
   }
 
   React.useEffect(() => {
